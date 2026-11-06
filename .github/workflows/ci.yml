@@ -27,17 +27,14 @@ jobs:
         run: |
           go mod tidy
           go test -v ./...
-          go build -v -o quotadock-daemon .
+          go build -v .
 
   build-macos:
     name: Build & Test macOS MenuBar App (Swift)
-    runs-on: macos-14
+    runs-on: macos-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_15.4.app
 
       - name: Swift Build & Test
         working-directory: macOS
