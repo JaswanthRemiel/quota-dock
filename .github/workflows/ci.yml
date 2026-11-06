@@ -10,6 +10,7 @@ jobs:
   build-daemon:
     name: Build & Test Cross-Platform Daemon (Go)
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
@@ -20,7 +21,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version: '1.24'
 
       - name: Test & Build Daemon
         working-directory: daemon
